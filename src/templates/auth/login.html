@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css' )
+    }}"}>
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <div class="text-center mt-4 name">
+        Bienvenido
+    </div>
+    <div class="logo">
+        <img
+            src="{{ url_for('static', filename='logo-spa.jpg') }}"
+            alt="">
+    </div>
+    <div class="text-center mt-4 name-xs">
+        Iniciar Sesion
+    </div>
+    <form class="p-3 mt-3" action="/login" method="POST">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="username" id="userName"
+                placeholder="Nombre de usuario">
+        </div>
+        <div class="form-field d-flex align-items-center mt-4">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd"
+                placeholder="Contraseña">
+        </div>
+        <button class="btn mt-4">Iniciar Sesión</button>
+    </form>
+
+</div>
+{% endblock %}
