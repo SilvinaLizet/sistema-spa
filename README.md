@@ -38,6 +38,8 @@ Instalar los paquetes flask flask-login y el gestor de base de datos
 
 ```
 pip install flask flask-login flask-mysqldb
+
+pip install -U Flask-WTF
 ```
 
 Para ejecutar la aplicacion puede ejecutar con python app.py o

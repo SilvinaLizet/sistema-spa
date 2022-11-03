@@ -23,11 +23,24 @@ Login
         Iniciar Sesion
     </div>
     <form class="p-3 mt-3" action="/login" method="POST">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <br>
+        {% for message in messages %}
+        <div class="alert alert-primary alert-dismissible" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith%}
         <div class="form-field d-flex align-items-center">
             <span class="far fa-user"></span>
             <input type="text" name="username" id="userName"
                 placeholder="Nombre de usuario">
         </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-field d-flex align-items-center mt-4">
             <span class="fas fa-key"></span>
             <input type="password" name="password" id="pwd"

@@ -10,6 +10,7 @@ Home
 
 {% block body %}
 
-<h1>Bienvenido</h1>
 
+<h1>Bienvenido, {{ current_user.nombre}} {{ current_user.apellidos}}</h1>
+<a href="{{ url_for('logout' ) }}" class="btn btn-secundary">Cerrar Sesión</a>
 {% endblock %}

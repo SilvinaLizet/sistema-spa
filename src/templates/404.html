@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+
+{% block title %}
+Not Found
+{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>404</h1>
+        </div>
+        <h2>OOPS, LA PÁGINA QUE BUSCA NO SE ENCUENTRA!</h2>
+        <a href="{{ url_for('login' ) }}"><span class="arrow"></span>Iniciar
+            Sesión</a>
+    </div>
+</div>
+
+
+
+{% endblock %}
