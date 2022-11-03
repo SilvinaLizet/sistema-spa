@@ -1,7 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 from config import config
+
+# * models
+from models.ModelUser import ModelUser
+
+# * entities
+from models.entities.User import User
 
 app = Flask(__name__)
 
@@ -15,12 +21,29 @@ def index():
 
 @app.route('/login', methods=['GET',"POST"])
 def login():
-    if request.method=='POST':
-        print(request.form['username'])
-        print(request.form['password'])
-        return render_template('auth/login.html')
+    if request.method == 'POST':
+        # print(request.form['username'])
+        # print(request.form['password'])
+        user = User(0, "", "", request.form['username'], request.form['password'], "",0,"", "")
+        logged_user = ModelUser.login(db, user)
+        print(user)
+        print(logged_user)
+        if logged_user != None:
+            if logged_user.password:
+                print('Usuario logeado')
+                return redirect(url_for('home'))
+            else:
+                print("Invalid password...")
+                return render_template('auth/login.html')
+        else:
+            print("User not found...")
+            return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 if __name__ == "__main__":
     app.config.from_object(config['development'])

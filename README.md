@@ -10,14 +10,38 @@ Ejecutar en terminal
 python -m virtualenv env
 ```
 
+o
+
+```
+npm run virtualenv
+```
+
+Cambiar al entorno virtual
+
+```
+.\env\Scripts\activate
+```
+
 Instalar los paquetes necesarios
 
 ```
 pip install -r requirements.txt
 ```
 
-Instalar los paquetes npm
+o
 
 ```
-npm i
+npm run install
+```
+
+Instalar los paquetes flask flask-login y el gestor de base de datos
+
+```
+pip install flask flask-login flask-mysqldb
+```
+
+Para ejecutar la aplicacion puede ejecutar con python app.py o
+
+```
+npm run dev
 ```
